@@ -1,0 +1,15 @@
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
+motormusic\queue.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+motormusic\queue.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+motormusic\queue.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+motormusic\queue.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+motormusic\queue.o: ../Core/Inc/FreeRTOSConfig.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+motormusic\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h

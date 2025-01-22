@@ -1,0 +1,16 @@
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+motormusic\tasks.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+motormusic\tasks.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+motormusic\tasks.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+motormusic\tasks.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+motormusic\tasks.o: ../Core/Inc/FreeRTOSConfig.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+motormusic\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h

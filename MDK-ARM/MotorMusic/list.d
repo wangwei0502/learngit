@@ -1,0 +1,12 @@
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+motormusic\list.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+motormusic\list.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+motormusic\list.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+motormusic\list.o: ../Core/Inc/FreeRTOSConfig.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+motormusic\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

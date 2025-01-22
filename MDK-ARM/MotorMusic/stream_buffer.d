@@ -1,0 +1,14 @@
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+motormusic\stream_buffer.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+motormusic\stream_buffer.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+motormusic\stream_buffer.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+motormusic\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+motormusic\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
