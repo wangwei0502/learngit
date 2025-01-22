@@ -20,7 +20,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
-
 /* USER CODE BEGIN 0 */
 RING_BUFF_t Ringbuf_pc_rx; 
 RING_BUFF_t Ringbuf_tx_pc;
@@ -98,7 +97,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
     hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
     hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-    hdma_usart1_rx.Init.Mode = DMA_NORMAL;
+    hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
     hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
     hdma_usart1_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
@@ -290,7 +289,7 @@ void McuSendData(uint8_t *pdata, uint8_t len,UART_HandleTypeDef* huartx)
     for(uint8_t i=0;i<len;i++){
 		TxBuf[i] = pdata[i];
 	 }
-		
+	
 	HAL_UART_Transmit_DMA(huartx,TxBuf,len);
 }
 

@@ -67,7 +67,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   uint8_t databuff[128] = {0};
-  uint8_t datalength = 0;
+  static uint8_t datalength = 0;
   Ringbuff_init();
   /* USER CODE END 1 */
 
@@ -102,13 +102,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-	HAL_GPIO_TogglePin(LED2_GPIO_Port,LED2_Pin);
-	HAL_GPIO_TogglePin(LED3_GPIO_Port,LED3_Pin); 
-	HAL_Delay(1000);
-//	HAL_UART_Transmit_DMA(&huart1,databuff,3);
 	if(Ringbuf_pc_rx.trans_len > 0)
 	{
+	  HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
 	  datalength = Ringbuf_pc_rx.trans_len;
 	  Ringbuff_Read_multi_data(&Ringbuf_pc_rx,databuff,Ringbuf_pc_rx.trans_len);
 	  McuSendData(databuff,datalength,&huart1);

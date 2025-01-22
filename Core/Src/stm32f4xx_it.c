@@ -322,13 +322,20 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
    uint16_t data_length = 0;
    if (huart->Instance == USART1)
    {
-		__HAL_DMA_DISABLE(huart->hdmarx);
 		data_length  = PC_TxRx_SIZE - __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);   //计算接收到的数据长度
-		Ringbuff_Write_multi_data(&Ringbuf_pc_rx,DMA_PC_Rx,data_length);		   
-		HAL_UART_Receive_DMA(&huart1, DMA_PC_Rx, PC_TxRx_SIZE);	
-		 __HAL_DMA_ENABLE(huart->hdmarx); 
+	   if(data_length > 0)
+	   {
+		 __HAL_DMA_DISABLE(huart->hdmarx);
+		 Ringbuff_Write_multi_data(&Ringbuf_pc_rx,DMA_PC_Rx,data_length);		   
+//		 HAL_UART_Receive_DMA(&huart1, DMA_PC_Rx, PC_TxRx_SIZE);	
+		  __HAL_DMA_ENABLE(huart->hdmarx); 
+	   }
    }
-	 else;
+   else;
 }	
 
+void UART_DMATxHalfCplt(UART_HandleTypeDef *huart)
+{
+
+}
 /* USER CODE END 1 */
