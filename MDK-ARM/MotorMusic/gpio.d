@@ -36,3 +36,13 @@ motormusic\gpio.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdb
 motormusic\gpio.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
 motormusic\gpio.o: ../Core/Inc/usart.h
 motormusic\gpio.o: ../Core/Inc/main.h
+motormusic\gpio.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+motormusic\gpio.o: ../Core/Inc/FreeRTOSConfig.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

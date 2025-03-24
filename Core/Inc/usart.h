@@ -31,7 +31,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 
 #define EM_PRODUCT_VERSION         "EM_MotorMusic_V0.0.1"
-#define PC_TxRx_SIZE 128
+#define PC_TxRx_SIZE 256
 
 extern UART_HandleTypeDef huart1;
 /* USER CODE END Includes */
@@ -67,7 +67,7 @@ void Ringbuff_config(RING_BUFF_t* ringBuff, uint16_t bufferLen, uint8_t *data_ge
 bool Ringbuff_Write_multi_data(RING_BUFF_t *rbuf, uint8_t *buf, int len);
 bool Ringbuff_Read_multi_data(RING_BUFF_t *rbuf, uint8_t *buf, int len) ;
 
-void McuSendData(uint8_t *pdata, uint8_t len,UART_HandleTypeDef* huartx);
+bool McuSendData(uint8_t *pdata, uint8_t len,UART_HandleTypeDef* huartx);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

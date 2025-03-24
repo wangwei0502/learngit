@@ -22,7 +22,8 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "FreeRTOS.h"
+#include "task.h"
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -90,19 +91,19 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(LED3_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI0_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 4, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI1_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 4, 0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 4, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI3_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 4, 0);
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI4_IRQn, 15, 0);
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 4, 0);
   HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
 }
@@ -195,7 +196,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin==KEY1_GPIO_PIN)
   {
-    HAL_Delay(20);/* 延时一小段时间，消除抖动 */
+//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY1_GPIO,KEY1_GPIO_PIN)==KEY1_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
@@ -205,7 +206,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
   else if(GPIO_Pin==KEY2_GPIO_PIN)
   {
-    HAL_Delay(20);/* 延时一小段时间，消除抖动 */
+//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY2_GPIO,KEY2_GPIO_PIN)==KEY2_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
@@ -215,7 +216,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
   else if(GPIO_Pin==KEY3_GPIO_PIN)
   {
-    HAL_Delay(20);/* 延时一小段时间，消除抖动 */
+//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY3_GPIO,KEY3_GPIO_PIN)==KEY3_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
@@ -225,7 +226,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
   else if(GPIO_Pin==KEY4_GPIO_PIN)
   {
-    HAL_Delay(20);/* 延时一小段时间，消除抖动 */
+ //   vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY4_GPIO,KEY4_GPIO_PIN)==KEY4_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
@@ -237,7 +238,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
   else if(GPIO_Pin==KEY5_GPIO_PIN)
   {
-    HAL_Delay(20);/* 延时一小段时间，消除抖动 */
+//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY5_GPIO,KEY5_GPIO_PIN)==KEY5_DOWN_LEVEL)
     {
       BEEP_TOGGLE;

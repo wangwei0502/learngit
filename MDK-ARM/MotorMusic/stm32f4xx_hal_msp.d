@@ -35,3 +35,4 @@ motormusic\stm32f4xx_hal_msp.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..
 motormusic\stm32f4xx_hal_msp.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
 motormusic\stm32f4xx_hal_msp.o: ../Core/Inc/usart.h
 motormusic\stm32f4xx_hal_msp.o: ../Core/Inc/main.h
+motormusic\stm32f4xx_hal_msp.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -130,9 +130,6 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-//    LED1_TOGGLE;
-//    LED2_TOGGLE;
-//    LED3_TOGGLE;
     osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
@@ -148,7 +145,7 @@ void StartDefaultTask(void const * argument)
 void TxRxTask(void const * argument)
 {
   /* USER CODE BEGIN TxRxTask */
-  uint8_t databuff[128] = {0};
+  uint8_t databuff[PC_TxRx_SIZE] = {0};
   static uint8_t datalength = 0;
   /* Infinite loop */
   for(;;)
@@ -157,8 +154,15 @@ void TxRxTask(void const * argument)
 	{
 	  HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
 	  datalength = Ringbuf_pc_rx.trans_len;
-	  Ringbuff_Read_multi_data(&Ringbuf_pc_rx,databuff,Ringbuf_pc_rx.trans_len);
-	  McuSendData(databuff,datalength,&huart1);
+	 //读取数据
+      if(Ringbuff_Read_multi_data(&Ringbuf_pc_rx, databuff, Ringbuf_pc_rx.trans_len) != 0)
+      {
+      }
+
+      // 发送数据
+      if(McuSendData(databuff, datalength, &huart1) != 0)
+      {
+      }
 	}
     osDelay(1);
   }
@@ -167,5 +171,31 @@ void TxRxTask(void const * argument)
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
+
+// //定义结构体
+//    struct student{
+//        int num;
+//        char* name;
+//        char sex;
+//        int age;
+//        struct student * next;
+//    };
+//    //结构体数据
+//    struct student stu1={1,"张三",'m',18,NULL};
+//    struct student stu2={2,"李四",'f',19,NULL};
+//    struct student stu3={3,"王五",'m',20,NULL};
+//    struct student stu4={4,"赵六",'f',21,NULL};
+//    //把数据串起来
+//    stu1.next=&stu2;
+//    stu2.next=&stu3;
+//    stu3.next=&stu4;
+//    //打印结果可以通过判断next是否为空来结束循环
+//    struct student * p=&stu1; //定义一个指向第一个元素的指针
+//    printf("编号\t姓名\t性别\t年龄\n");
+//    while(p!=NULL){
+//        printf("%d\t%s\t%s\t%d\n",p->num,p->name,p->sex=='m'?"男":"女",p->age);
+//        p=p->next;//把指针移到下一个元素
+//    }
+//    return 0;
 
 /* USER CODE END Application */

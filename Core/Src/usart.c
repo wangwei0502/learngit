@@ -282,15 +282,33 @@ bool Ringbuff_Read_multi_data(RING_BUFF_t *rbuf, uint8_t *buf, int len)
  * @param  len     : 发送的数据长度
  * @retval 
  */
-void McuSendData(uint8_t *pdata, uint8_t len,UART_HandleTypeDef* huartx)
+bool McuSendData(uint8_t *pdata, uint8_t len,UART_HandleTypeDef* huartx)
 {
 	static uint8_t TxBuf[128];
 	
-    for(uint8_t i=0;i<len;i++){
-		TxBuf[i] = pdata[i];
-	 }
-	
-	HAL_UART_Transmit_DMA(huartx,TxBuf,len);
+    if((pdata == NULL) || (huartx == NULL))
+	{
+		return false;
+	}	
+	else
+	{
+		for(uint8_t i=0;i<len;i++){
+			TxBuf[i] = pdata[i];
+		 }
+		
+		HAL_UART_Transmit_DMA(huartx,TxBuf,len);
+		return true;
+	}
 }
+
+//函数重定向，同时需要包含头文件  #include "stdio.h"
+	int fputc (int ch,FILE* f){
+		uint8_t temp[1]={ch};
+		{
+		HAL_UART_Transmit(&huart1,temp,1,0xff);
+		}
+		return HAL_OK;
+	}
+ 
 
 /* USER CODE END 1 */

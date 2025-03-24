@@ -302,8 +302,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	   if(data_length > 0)
 	   {
 		 __HAL_DMA_DISABLE(huart->hdmarx);
-		 Ringbuff_Write_multi_data(&Ringbuf_pc_rx,DMA_PC_Rx,data_length);		   
-//		 HAL_UART_Receive_DMA(&huart1, DMA_PC_Rx, PC_TxRx_SIZE);	
+		 Ringbuff_Write_multi_data(&Ringbuf_pc_rx,DMA_PC_Rx,data_length);		   	
 		  __HAL_DMA_ENABLE(huart->hdmarx); 
 	   }
    }

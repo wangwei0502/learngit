@@ -35,7 +35,7 @@
 "motormusic\cmsis_os.o"
 "motormusic\heap_4.o"
 "motormusic\port.o"
---strict --scatter "MotorMusic\MotorMusic.sct"
+--library_type=microlib --strict --scatter "MotorMusic\MotorMusic.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "MotorMusic.map" -o MotorMusic\MotorMusic.axf

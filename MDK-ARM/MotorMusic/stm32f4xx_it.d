@@ -35,4 +35,5 @@ motormusic\stm32f4xx_it.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\incl
 motormusic\stm32f4xx_it.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
 motormusic\stm32f4xx_it.o: ../Core/Inc/usart.h
 motormusic\stm32f4xx_it.o: ../Core/Inc/main.h
+motormusic\stm32f4xx_it.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 motormusic\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h

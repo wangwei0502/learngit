@@ -35,6 +35,7 @@ motormusic\main.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdb
 motormusic\main.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
 motormusic\main.o: ../Core/Inc/usart.h
 motormusic\main.o: ../Core/Inc/main.h
+motormusic\main.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 motormusic\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 motormusic\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 motormusic\main.o: ../Core/Inc/FreeRTOSConfig.h

@@ -36,3 +36,4 @@ motormusic\dma.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdbo
 motormusic\dma.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\string.h
 motormusic\dma.o: ../Core/Inc/usart.h
 motormusic\dma.o: ../Core/Inc/main.h
+motormusic\dma.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
