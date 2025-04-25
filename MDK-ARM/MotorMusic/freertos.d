@@ -45,6 +45,7 @@ motormusic\freertos.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\
 motormusic\freertos.o: ../Core/Inc/usart.h
 motormusic\freertos.o: ../Core/Inc/main.h
 motormusic\freertos.o: D:\NameEnlishApp\Compiler\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+motormusic\freertos.o: ../Core/Inc/tim.h
 motormusic\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 motormusic\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 motormusic\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h

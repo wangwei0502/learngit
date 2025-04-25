@@ -21,6 +21,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "main.h"
+#include "tim.h"
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -30,7 +31,21 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+    struct student{
+        int num;
+        char* name;
+        char sex;
+        int age;
+        struct student * next;
+    };
+    //结构体数据
+    struct student stu1={1,"张三",'N',18,NULL};
+    struct student stu2={2,"李四",'V',19,NULL};
+    struct student stu3={3,"王五",'N',20,NULL};
+    struct student stu4={4,"赵六",'V',21,NULL};
+	volatile struct student * p= NULL; //定义一个指向第一个元素的指针
+	
+extern  volatile uint16_t KEY_VALUE;	
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -45,18 +60,20 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-
+osThreadId task1Handle;
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 osThreadId TxRxHandle;
+osThreadId PrintfHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+void Task1(void const * argument);
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void const * argument);
 void TxRxTask(void const * argument);
+void PrintfTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -111,8 +128,15 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(TxRx, TxRxTask, osPriorityRealtime, 0, 256);
   TxRxHandle = osThreadCreate(osThread(TxRx), NULL);
 
+  /* definition and creation of Printf */
+  osThreadDef(Printf, PrintfTask, osPriorityIdle, 0, 256);
+  PrintfHandle = osThreadCreate(osThread(Printf), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+    /* definition and creation of Printf */
+  osThreadDef(task1, Task1, osPriorityIdle, 0, 256);
+  task1Handle = osThreadCreate(osThread(task1), NULL);
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -130,6 +154,11 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+	//把数据串起来
+    stu1.next=&stu2;
+    stu2.next=&stu3;
+    stu3.next=&stu4; 
+	p=&stu1; //定义一个指向第一个元素的指针
     osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
@@ -169,33 +198,62 @@ void TxRxTask(void const * argument)
   /* USER CODE END TxRxTask */
 }
 
+/* USER CODE BEGIN Header_PrintfTask */
+/**
+* @brief Function implementing the Printf thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_PrintfTask */
+void PrintfTask(void const * argument)
+{
+  /* USER CODE BEGIN PrintfTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    if(KEY_VALUE == KEY1_GPIO_PIN)
+	{
+	  vTaskSuspend(TxRxHandle);
+	  KEY_VALUE = 0;
+	}
+	else if(KEY_VALUE == KEY2_GPIO_PIN)
+	{
+	  vTaskResume(TxRxHandle);
+	  KEY_VALUE = 0;
+	}
+	else;
+	
+	BLDCMotor_PhaseCtrl();
+	
+    osDelay(5);
+  }
+  /* USER CODE END PrintfTask */
+}
+
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 
-// //定义结构体
-//    struct student{
-//        int num;
-//        char* name;
-//        char sex;
-//        int age;
-//        struct student * next;
-//    };
-//    //结构体数据
-//    struct student stu1={1,"张三",'m',18,NULL};
-//    struct student stu2={2,"李四",'f',19,NULL};
-//    struct student stu3={3,"王五",'m',20,NULL};
-//    struct student stu4={4,"赵六",'f',21,NULL};
-//    //把数据串起来
-//    stu1.next=&stu2;
-//    stu2.next=&stu3;
-//    stu3.next=&stu4;
-//    //打印结果可以通过判断next是否为空来结束循环
-//    struct student * p=&stu1; //定义一个指向第一个元素的指针
-//    printf("编号\t姓名\t性别\t年龄\n");
-//    while(p!=NULL){
-//        printf("%d\t%s\t%s\t%d\n",p->num,p->name,p->sex=='m'?"男":"女",p->age);
-//        p=p->next;//把指针移到下一个元素
-//    }
-//    return 0;
+/**
+* @brief Function implementing the Printf thread.
+* @param argument: Not used
+* @retval None
+*/
+
+void Task1(void const * argument)
+{
+  /* USER CODE BEGIN PrintfTask */	
+  /* Infinite loop */
+  for(;;)
+  {
+	printf("编号\t姓名\t性别\t年龄\n");
+    //打印结果可以通过判断next是否为空来结束循环
+	while(p!=NULL){
+		printf("%d\t%s\t%s\t%d\n",p->num,p->name,p->sex=='N'?"男":"女",p->age);
+		p=p->next;//把指针移到下一个元素
+	}
+	vTaskDelete(NULL);
+    osDelay(10);
+  }
+}
 
 /* USER CODE END Application */

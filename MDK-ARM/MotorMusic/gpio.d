@@ -46,3 +46,8 @@ motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_
 motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+motormusic\gpio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h

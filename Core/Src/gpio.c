@@ -24,6 +24,12 @@
 /* USER CODE BEGIN 0 */
 #include "FreeRTOS.h"
 #include "task.h"
+#include "cmsis_os.h"
+
+extern osThreadId defaultTaskHandle;
+extern osThreadId TxRxHandle;
+extern osThreadId PrintfHandle;
+extern osThreadId task1Handle;
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -49,8 +55,8 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOI_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, LED1_Pin|LED2_Pin, GPIO_PIN_RESET);
@@ -91,19 +97,19 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(LED3_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI0_IRQn, 4, 0);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 15, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI1_IRQn, 4, 0);
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 15, 0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 4, 0);
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 15, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI3_IRQn, 4, 0);
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 15, 0);
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 
-  HAL_NVIC_SetPriority(EXTI4_IRQn, 4, 0);
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 15, 0);
   HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
 }
@@ -192,41 +198,43 @@ void BEEP_StateSet(BEEPState_TypeDef state)
   * 返 回 值: 无
   * 说    明: 无
   */
+volatile uint16_t KEY_VALUE = 0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+  BaseType_t xYieldRequired;
+  KEY_VALUE = GPIO_Pin;
   if(GPIO_Pin==KEY1_GPIO_PIN)
   {
-//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY1_GPIO,KEY1_GPIO_PIN)==KEY1_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
-      LED1_ON;
+      LED3_ON;
     }
     __HAL_GPIO_EXTI_CLEAR_IT(KEY1_GPIO_PIN);
   }
   else if(GPIO_Pin==KEY2_GPIO_PIN)
   {
-//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY2_GPIO,KEY2_GPIO_PIN)==KEY2_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
-      LED2_ON;
+      LED1_ON;
     }
     __HAL_GPIO_EXTI_CLEAR_IT(KEY2_GPIO_PIN);
   }
   else if(GPIO_Pin==KEY3_GPIO_PIN)
   {
-//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY3_GPIO,KEY3_GPIO_PIN)==KEY3_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
-      LED3_ON;
+      LED2_ON;
+	  xYieldRequired = xTaskResumeFromISR(TxRxHandle);
+	  if(xYieldRequired == pdTRUE)
+		  portYIELD_FROM_ISR( xYieldRequired );
     }
     __HAL_GPIO_EXTI_CLEAR_IT(KEY3_GPIO_PIN);
   }
   else if(GPIO_Pin==KEY4_GPIO_PIN)
   {
- //   vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY4_GPIO,KEY4_GPIO_PIN)==KEY4_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
@@ -238,7 +246,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
   else if(GPIO_Pin==KEY5_GPIO_PIN)
   {
-//    vTaskDelay(20);/* 延时一小段时间，消除抖动 */
     if(HAL_GPIO_ReadPin(KEY5_GPIO,KEY5_GPIO_PIN)==KEY5_DOWN_LEVEL)
     {
       BEEP_TOGGLE;
@@ -247,6 +254,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       LED3_ON;
     }
     __HAL_GPIO_EXTI_CLEAR_IT(KEY5_GPIO_PIN);
-  }  
+  }   
 }
 /* USER CODE END 2 */

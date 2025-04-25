@@ -51,4 +51,5 @@ motormusic\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 motormusic\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 motormusic\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 motormusic\main.o: ../Core/Inc/dma.h
+motormusic\main.o: ../Core/Inc/tim.h
 motormusic\main.o: ../Core/Inc/gpio.h

@@ -4,6 +4,7 @@
 "motormusic\gpio.o"
 "motormusic\freertos.o"
 "motormusic\dma.o"
+"motormusic\tim.o"
 "motormusic\usart.o"
 "motormusic\stm32f4xx_it.o"
 "motormusic\stm32f4xx_hal_msp.o"
